@@ -5,15 +5,20 @@
   
 
   
-  <title>Oscar Xu&#39;s Space</title>
+  <title>Sonarqube笔记 | Oscar Xu&#39;s Space</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Oscar Xu&#39;s Space">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="Sonarqube调研Sonarqube是什么SonarQube是一个开源的代码质量分析平台，便于管理代码的质量，可检查出项目代码的漏洞和潜在的逻辑问题。同时，它提供了丰富的插件，支持多种语言的检测， 如Java、Python、Groovy、C、C++等几十种编程语言的检测。它主要的核心价值体现在如下几个方面：  检查代码是否遵循编程标准：如命名规范，编写的规范等。 检查设计存在的潜在缺陷：Son">
+<meta name="keywords" content="devops,sonarqube,codereview">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Sonarqube笔记">
+<meta property="og:url" content="http://yoursite.com/2019/01/20/Sonarqube笔记/index.html">
 <meta property="og:site_name" content="Oscar Xu&#39;s Space">
+<meta property="og:description" content="Sonarqube调研Sonarqube是什么SonarQube是一个开源的代码质量分析平台，便于管理代码的质量，可检查出项目代码的漏洞和潜在的逻辑问题。同时，它提供了丰富的插件，支持多种语言的检测， 如Java、Python、Groovy、C、C++等几十种编程语言的检测。它主要的核心价值体现在如下几个方面：  检查代码是否遵循编程标准：如命名规范，编写的规范等。 检查设计存在的潜在缺陷：Son">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-03-20T01:31:20.070Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Oscar Xu&#39;s Space">
+<meta name="twitter:title" content="Sonarqube笔记">
+<meta name="twitter:description" content="Sonarqube调研Sonarqube是什么SonarQube是一个开源的代码质量分析平台，便于管理代码的质量，可检查出项目代码的漏洞和潜在的逻辑问题。同时，它提供了丰富的插件，支持多种语言的检测， 如Java、Python、Groovy、C、C++等几十种编程语言的检测。它主要的核心价值体现在如下几个方面：  检查代码是否遵循编程标准：如命名规范，编写的规范等。 检查设计存在的潜在缺陷：Son">
   
     <link rel="alternate" href="/atom.xml" title="Oscar Xu&#39;s Space" type="application/atom+xml">
   
@@ -60,9 +65,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-Sonarqube笔记" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-Sonarqube笔记" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/01/20/Sonarqube笔记/" class="article-date">
   <time datetime="2019-01-20T01:17:44.000Z" itemprop="datePublished">2019-01-20</time>
@@ -79,8 +82,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/20/Sonarqube笔记/">Sonarqube笔记</a>
+    <h1 class="article-title" itemprop="name">
+      Sonarqube笔记
     </h1>
   
 
@@ -167,95 +170,19 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-初始Tronado" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/08/07/初始Tronado/" class="article-date">
-  <time datetime="2018-08-07T03:17:42.000Z" itemprop="datePublished">2018-08-07</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/07/初始Tronado/">初始Tronado</a>
-    </h1>
+    <a href="/2018/08/07/初始Tronado/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">初始Tronado</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="初识Tornado"><a href="#初识Tornado" class="headerlink" title="初识Tornado"></a>初识Tornado</h1><h2 id="关于Tornado"><a href="#关于Tornado" class="headerlink" title="关于Tornado"></a>关于Tornado</h2><p>Tornado发布于2009年9月，是Facebook从当时收购的FriendFeed的实时信息服务开发而来。<br>摘抄自Tornado的官方文档：<br>Tornado is a Python web framework and asynchronous networking library, originally developed at FriendFeed. By using non-blocking network I/O, Tornado can scale to tens of thousands of open connections, making it ideal for long polling, WebSockets, and other applications that require a long-lived connection to each user.<br>Tornado是一个Python Web框架和异步网络库，最初是在FriendFeed上开发的。通过使用非阻塞网络I / O，Tornado可以扩展到数万个开放连接，使其成为长轮询，WebSockets和其他需要与每个用户建立长期连接的应用程序的理想选择。<br>因此确定Tornado的两个应用方向，Python的Web框架和异步网络库。这都得利于Tornado的非阻塞网络模型。 </p>
-<h2 id="安装Tornado"><a href="#安装Tornado" class="headerlink" title="安装Tornado"></a>安装Tornado</h2><p>执行命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install tornado</span><br></pre></td></tr></table></figure></p>
-<h2 id="Hello-World-for-Tornado"><a href="#Hello-World-for-Tornado" class="headerlink" title="Hello World for Tornado"></a>Hello World for Tornado</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">import tornado.ioloop # tornado核心库，提供了tornado的webserver</span><br><span class="line">import tornado.web # </span><br><span class="line"></span><br><span class="line">class MainHandler(tornado.web.RequestHandler):</span><br><span class="line">    def get(self):</span><br><span class="line">        self.write(&quot;Hello, world&quot;)</span><br><span class="line"></span><br><span class="line">def make_app():</span><br><span class="line">    return tornado.web.Application([</span><br><span class="line">        (r&quot;/&quot;, MainHandler),</span><br><span class="line">    ])</span><br><span class="line"></span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    app = make_app()</span><br><span class="line">    app.listen(8888)</span><br><span class="line">    tornado.ioloop.IOLoop.current().start()</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/07/初始Tronado/" data-id="cjtgj6kkr00016tfylfi8najl" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
   
 </article>
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/05/25/hello-world/" class="article-date">
-  <time datetime="2018-05-25T09:15:09.453Z" itemprop="datePublished">2018-05-25</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/25/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/05/25/hello-world/" data-id="cjtgj6kl000036tfyko8bqf30" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-
 
 </section>
         
