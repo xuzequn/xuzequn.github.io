@@ -5,19 +5,20 @@
   
 
   
-  <title>初始Tronado | Oscar Xu&#39;s Space</title>
+  <title>Leetcode-16-最接近的三数之和 | Oscar Xu&#39;s Space</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="初识Tornado关于TornadoTornado发布于2009年9月，是Facebook从当时收购的FriendFeed的实时信息服务开发而来。摘抄自Tornado的官方文档：Tornado is a Python web framework and asynchronous networking library, originally developed at FriendFeed. By">
+  <meta name="description" content="16. 最接近的三数之和   提交123456789101112131415161718192021222324252627class Solution:    def threeSumClosest(self, nums, target):        nums.sort()        x = 0        length = len(nums)        res = nums[1]">
+<meta name="keywords" content="ARTS-week02">
 <meta property="og:type" content="article">
-<meta property="og:title" content="初始Tronado">
-<meta property="og:url" content="http://yoursite.com/2018/08/07/初始Tronado/index.html">
+<meta property="og:title" content="Leetcode-16-最接近的三数之和">
+<meta property="og:url" content="http://yoursite.com/2019/03/31/Leetcode-16-最接近的三数之和/index.html">
 <meta property="og:site_name" content="Oscar Xu&#39;s Space">
-<meta property="og:description" content="初识Tornado关于TornadoTornado发布于2009年9月，是Facebook从当时收购的FriendFeed的实时信息服务开发而来。摘抄自Tornado的官方文档：Tornado is a Python web framework and asynchronous networking library, originally developed at FriendFeed. By">
+<meta property="og:description" content="16. 最接近的三数之和   提交123456789101112131415161718192021222324252627class Solution:    def threeSumClosest(self, nums, target):        nums.sort()        x = 0        length = len(nums)        res = nums[1]">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-08-08T06:06:59.256Z">
+<meta property="og:updated_time" content="2019-03-31T15:39:50.091Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="初始Tronado">
-<meta name="twitter:description" content="初识Tornado关于TornadoTornado发布于2009年9月，是Facebook从当时收购的FriendFeed的实时信息服务开发而来。摘抄自Tornado的官方文档：Tornado is a Python web framework and asynchronous networking library, originally developed at FriendFeed. By">
+<meta name="twitter:title" content="Leetcode-16-最接近的三数之和">
+<meta name="twitter:description" content="16. 最接近的三数之和   提交123456789101112131415161718192021222324252627class Solution:    def threeSumClosest(self, nums, target):        nums.sort()        x = 0        length = len(nums)        res = nums[1]">
   
     <link rel="alternate" href="/atom.xml" title="Oscar Xu&#39;s Space" type="application/atom+xml">
   
@@ -64,10 +65,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-初始Tronado" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-Leetcode-16-最接近的三数之和" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/08/07/初始Tronado/" class="article-date">
-  <time datetime="2018-08-07T03:17:42.000Z" itemprop="datePublished">2018-08-07</time>
+    <a href="/2019/03/31/Leetcode-16-最接近的三数之和/" class="article-date">
+  <time datetime="2019-03-31T13:26:51.000Z" itemprop="datePublished">2019-03-31</time>
 </a>
     
   </div>
@@ -78,7 +79,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      初始Tronado
+      Leetcode-16-最接近的三数之和
     </h1>
   
 
@@ -86,35 +87,37 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="初识Tornado"><a href="#初识Tornado" class="headerlink" title="初识Tornado"></a>初识Tornado</h1><h2 id="关于Tornado"><a href="#关于Tornado" class="headerlink" title="关于Tornado"></a>关于Tornado</h2><p>Tornado发布于2009年9月，是Facebook从当时收购的FriendFeed的实时信息服务开发而来。<br>摘抄自Tornado的官方文档：<br>Tornado is a Python web framework and asynchronous networking library, originally developed at FriendFeed. By using non-blocking network I/O, Tornado can scale to tens of thousands of open connections, making it ideal for long polling, WebSockets, and other applications that require a long-lived connection to each user.<br>Tornado是一个Python Web框架和异步网络库，最初是在FriendFeed上开发的。通过使用非阻塞网络I / O，Tornado可以扩展到数万个开放连接，使其成为长轮询，WebSockets和其他需要与每个用户建立长期连接的应用程序的理想选择。<br>因此确定Tornado的两个应用方向，Python的Web框架和异步网络库。这都得利于Tornado的非阻塞网络模型。 </p>
-<h2 id="安装Tornado"><a href="#安装Tornado" class="headerlink" title="安装Tornado"></a>安装Tornado</h2><p>执行命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install tornado</span><br></pre></td></tr></table></figure></p>
-<h2 id="Hello-World-for-Tornado"><a href="#Hello-World-for-Tornado" class="headerlink" title="Hello World for Tornado"></a>Hello World for Tornado</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">import tornado.ioloop # tornado核心库，提供了tornado的webserver</span><br><span class="line">import tornado.web # </span><br><span class="line"></span><br><span class="line">class MainHandler(tornado.web.RequestHandler):</span><br><span class="line">    def get(self):</span><br><span class="line">        self.write(&quot;Hello, world&quot;)</span><br><span class="line"></span><br><span class="line">def make_app():</span><br><span class="line">    return tornado.web.Application([</span><br><span class="line">        (r&quot;/&quot;, MainHandler),</span><br><span class="line">    ])</span><br><span class="line"></span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    app = make_app()</span><br><span class="line">    app.listen(8888)</span><br><span class="line">    tornado.ioloop.IOLoop.current().start()</span><br></pre></td></tr></table></figure>
+        <p><a href="https://leetcode-cn.com/problems/3sum-closest/" target="_blank" rel="noopener">16. 最接近的三数之和</a>  </p>
+<h1 id="提交"><a href="#提交" class="headerlink" title="提交"></a>提交</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def threeSumClosest(self, nums, target):</span><br><span class="line">        nums.sort()</span><br><span class="line">        x = 0</span><br><span class="line">        length = len(nums)</span><br><span class="line">        res = nums[1] + nums[0] + nums[2]</span><br><span class="line">        if length == 3:</span><br><span class="line">            return res</span><br><span class="line">        while  x &lt; length:</span><br><span class="line">            a = nums[x]</span><br><span class="line">            y = x+1</span><br><span class="line">            z = length-1</span><br><span class="line">            while y &lt; z:</span><br><span class="line">                b = nums[y]</span><br><span class="line">                c = nums[z]</span><br><span class="line">                Sum = a + b + c</span><br><span class="line">                if abs(target - Sum) &lt; abs(target - res):</span><br><span class="line">                    res = Sum</span><br><span class="line">                if Sum &gt; target:</span><br><span class="line">                    z -= 1</span><br><span class="line">                elif Sum &lt; target:</span><br><span class="line">                    y += 1</span><br><span class="line">                else:</span><br><span class="line">                    res = target</span><br><span class="line">                    return res</span><br><span class="line">            x += 1</span><br><span class="line">        return res</span><br></pre></td></tr></table></figure>
+<p>与15三数之和差不多，双指针操作。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/07/初始Tronado/" data-id="cjtx2x1fp000xhnjfjt9yrfd6" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/31/Leetcode-16-最接近的三数之和/" data-id="cjtx2x1ef0008hnjf2xe13heb" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ARTS-week02/">ARTS-week02</a></li></ul>
+
     </footer>
   </div>
   
     
 <nav id="article-nav">
   
-    <a href="/2019/01/20/Sonarqube笔记/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/03/31/Inside-look-at-modern-web-browser-part-1/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          Sonarqube笔记
+          Inside look at modern web browser (part 1)
         
       </div>
     </a>
   
   
-    <a href="/2018/05/25/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/03/24/Week01-Share-git常见git命令清单/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Hello World</div>
+      <div class="article-nav-title">Week01-Share-git常见git命令清单</div>
     </a>
   
 </nav>

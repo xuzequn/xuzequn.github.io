@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>k8s start | Oscar Xu&#39;s Space</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="K8s Start操作Note:startDeploying an App 发布app   1kubectl run kubernetes-bootcamp --image=gcr.io/google-samples/kubernetes-bootcamp:v1 --port=8080  首先搜索可运行应用程序实例的合适节点。    安排在该节点上运行的应用程序。   已配置群集，以便在需要时重新">
+<meta name="keywords" content="ARTS-week02">
+<meta property="og:type" content="article">
+<meta property="og:title" content="k8s start">
+<meta property="og:url" content="http://yoursite.com/2019/03/31/k8s-start/index.html">
+<meta property="og:site_name" content="Oscar Xu&#39;s Space">
+<meta property="og:description" content="K8s Start操作Note:startDeploying an App 发布app   1kubectl run kubernetes-bootcamp --image=gcr.io/google-samples/kubernetes-bootcamp:v1 --port=8080  首先搜索可运行应用程序实例的合适节点。    安排在该节点上运行的应用程序。   已配置群集，以便在需要时重新">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-03-31T15:50:50.624Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="k8s start">
+<meta name="twitter:description" content="K8s Start操作Note:startDeploying an App 发布app   1kubectl run kubernetes-bootcamp --image=gcr.io/google-samples/kubernetes-bootcamp:v1 --port=8080  首先搜索可运行应用程序实例的合适节点。    安排在该节点上运行的应用程序。   已配置群集，以便在需要时重新">
+  
+    <link rel="alternate" href="/atom.xml" title="Oscar Xu&#39;s Space" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Oscar Xu&#39;s Space</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-k8s-start" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/03/31/k8s-start/" class="article-date">
+  <time datetime="2019-03-31T15:14:49.000Z" itemprop="datePublished">2019-03-31</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      k8s start
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="K8s-Start"><a href="#K8s-Start" class="headerlink" title="K8s Start"></a>K8s Start</h1><h2 id="操作Note"><a href="#操作Note" class="headerlink" title="操作Note:"></a>操作Note:</h2><h3 id="start"><a href="#start" class="headerlink" title="start"></a>start</h3><h3 id="Deploying-an-App"><a href="#Deploying-an-App" class="headerlink" title="Deploying an App"></a>Deploying an App</h3><ul>
+<li><p>发布app  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl run kubernetes-bootcamp --image=gcr.io/google-samples/kubernetes-bootcamp:v1 --port=8080</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>首先搜索可运行应用程序实例的合适节点。  </p>
+</li>
+<li>安排在该节点上运行的应用程序。  </li>
+<li>已配置群集，以便在需要时重新计划新节点上的实例。  </li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl get deployments</span><br></pre></td></tr></table></figure>
+<ul>
+<li>列出部署的应用   </li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl proxy</span><br></pre></td></tr></table></figure>
+<ul>
+<li>kubectl命令可以创建一个代理，将通信转发到集群范围的专用网络中。代理可以通过按control-c终止，并且在运行时不会显示任何输出。  </li>
+<li><p>现在可以通过代理地址来访问运行集群的api例如：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl http://localhost:8081/version</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>api服务器将根据pod名称自动为每个pod创建一个端点，该端点也可以通过代理访问。  </p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export POD_NAME=$(kubectl get pods -o go-template --template &apos;&#123;&#123;range .items&#125;&#125;&#123;&#123;.metadata.name&#125;&#125;&#123;&#123;&quot;\n&quot;&#125;&#125;&#123;&#123;end&#125;&#125;&apos;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo Name of the Pod: $POD_NAME</span><br></pre></td></tr></table></figure>
+<ul>
+<li>首先，我们需要获取pod名称，然后将其存储在环境变量pod_name中</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl http://localhost:8001/api/v1/namespaces/default/pods/$POD_NAME/proxy/</span><br></pre></td></tr></table></figure>
+<ul>
+<li>现在，我们可以向运行在该pod中的应用程序发出HTTP请求</li>
+<li>这个url就是部署podAPI的路由</li>
+</ul>
+<h2 id="Exploring-Your-App"><a href="#Exploring-Your-App" class="headerlink" title="Exploring Your App"></a>Exploring Your App</h2><ul>
+<li><p>探索应用<br>  <code>kubectl get pods</code>  </p>
+<blockquote>
+<p>查看存在的pod  </p>
+</blockquote>
+<p>  <code>kubectl describe pods</code>  </p>
+<blockquote>
+<p>查看pods内部署的信息及参数  </p>
+</blockquote>
+<p>  <code>kubectl log $POD_NAME</code></p>
+<blockquote>
+<p>查看pod内部的日志，级别为任何STDOUT日志。</p>
+</blockquote>
+<p>  <code>kubectl exec $POD_NAME env</code>  </p>
+<blockquote>
+<p>pod启动后，使podname作为参数通过命令来对pod进行操作，比如查看pod环境变量。此时因为pod只有一个容器，所有容器名可以忽略。</p>
+</blockquote>
+<p>  <code>kubectl exec -ti $POD_NAME bash</code>  </p>
+<blockquote>
+<p>进入pod内容器的命令</p>
+</blockquote>
+<p>  <code></code></p>
+<h2 id="Expose-Your-App"><a href="#Expose-Your-App" class="headerlink" title="Expose Your App"></a>Expose Your App</h2></li>
+<li><p>暴露你的应用<br> <code>kubectl get services</code></p>
+<blockquote>
+<p>获取当前集群的服务  </p>
+</blockquote>
+<p> <code>kubectl expose deployment/kubernetes-bootcamp --type=&quot;NodePort&quot; --port 8080</code></p>
+<blockquote>
+<p>创建一个应用并且对外暴露，用NodePort作为expose的启动参数。  </p>
+</blockquote>
+<p> <code></code></p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/03/31/k8s-start/" data-id="cjtx2x1fk000whnjfrn6ud5g2" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ARTS-week02/">ARTS-week02</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/03/31/Week02-Share-git-rebase-与-git-merge-的区别/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Week02-Share-git rebase 与 git merge 的区别
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/03/31/Inside-look-at-modern-web-browser-part-1/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Inside look at modern web browser (part 1)</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Tools/">Tools</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ARTS-week01/">ARTS-week01</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ARTS-week02/">ARTS-week02</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/codereview/">codereview</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/devops/">devops</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sonarqube/">sonarqube</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/左耳ARTS/">左耳ARTS</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ARTS-week01/" style="font-size: 15px;">ARTS-week01</a> <a href="/tags/ARTS-week02/" style="font-size: 20px;">ARTS-week02</a> <a href="/tags/codereview/" style="font-size: 10px;">codereview</a> <a href="/tags/devops/" style="font-size: 10px;">devops</a> <a href="/tags/sonarqube/" style="font-size: 10px;">sonarqube</a> <a href="/tags/左耳ARTS/" style="font-size: 10px;">左耳ARTS</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/03/31/Week02-Share-git-rebase-与-git-merge-的区别/">Week02-Share-git rebase 与 git merge 的区别</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/31/k8s-start/">k8s start</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/31/Inside-look-at-modern-web-browser-part-1/">Inside look at modern web browser (part 1)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/31/Leetcode-16-最接近的三数之和/">Leetcode-16-最接近的三数之和</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/24/Week01-Share-git常见git命令清单/">Week01-Share-git常见git命令清单</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 Oscar Xu<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

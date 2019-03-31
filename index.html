@@ -62,6 +62,229 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Week02-Share-git-rebase-与-git-merge-的区别" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/03/31/Week02-Share-git-rebase-与-git-merge-的区别/" class="article-date">
+  <time datetime="2019-03-31T15:23:41.000Z" itemprop="datePublished">2019-03-31</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/31/Week02-Share-git-rebase-与-git-merge-的区别/">Week02-Share-git rebase 与 git merge 的区别</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="https://juejin.im/post/5c90fd5bf265da611b1eca96" target="_blank" rel="noopener">git rebase 与 git merge 的区别</a><br>这周看到一篇关于rebase与merge区别的文章，还带着事例。去年面试还被问过rebase的操作。之前熟悉rebase还自己做过实验。这篇文章写的挺详细的，分享一下。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/03/31/Week02-Share-git-rebase-与-git-merge-的区别/" data-id="cjtx2x1et000ehnjfuvi7klf9" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ARTS-week02/">ARTS-week02</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-k8s-start" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/03/31/k8s-start/" class="article-date">
+  <time datetime="2019-03-31T15:14:49.000Z" itemprop="datePublished">2019-03-31</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/31/k8s-start/">k8s start</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="K8s-Start"><a href="#K8s-Start" class="headerlink" title="K8s Start"></a>K8s Start</h1><h2 id="操作Note"><a href="#操作Note" class="headerlink" title="操作Note:"></a>操作Note:</h2><h3 id="start"><a href="#start" class="headerlink" title="start"></a>start</h3><h3 id="Deploying-an-App"><a href="#Deploying-an-App" class="headerlink" title="Deploying an App"></a>Deploying an App</h3><ul>
+<li><p>发布app  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl run kubernetes-bootcamp --image=gcr.io/google-samples/kubernetes-bootcamp:v1 --port=8080</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>首先搜索可运行应用程序实例的合适节点。  </p>
+</li>
+<li>安排在该节点上运行的应用程序。  </li>
+<li>已配置群集，以便在需要时重新计划新节点上的实例。  </li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl get deployments</span><br></pre></td></tr></table></figure>
+<ul>
+<li>列出部署的应用   </li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl proxy</span><br></pre></td></tr></table></figure>
+<ul>
+<li>kubectl命令可以创建一个代理，将通信转发到集群范围的专用网络中。代理可以通过按control-c终止，并且在运行时不会显示任何输出。  </li>
+<li><p>现在可以通过代理地址来访问运行集群的api例如：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl http://localhost:8081/version</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>api服务器将根据pod名称自动为每个pod创建一个端点，该端点也可以通过代理访问。  </p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export POD_NAME=$(kubectl get pods -o go-template --template &apos;&#123;&#123;range .items&#125;&#125;&#123;&#123;.metadata.name&#125;&#125;&#123;&#123;&quot;\n&quot;&#125;&#125;&#123;&#123;end&#125;&#125;&apos;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo Name of the Pod: $POD_NAME</span><br></pre></td></tr></table></figure>
+<ul>
+<li>首先，我们需要获取pod名称，然后将其存储在环境变量pod_name中</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl http://localhost:8001/api/v1/namespaces/default/pods/$POD_NAME/proxy/</span><br></pre></td></tr></table></figure>
+<ul>
+<li>现在，我们可以向运行在该pod中的应用程序发出HTTP请求</li>
+<li>这个url就是部署podAPI的路由</li>
+</ul>
+<h2 id="Exploring-Your-App"><a href="#Exploring-Your-App" class="headerlink" title="Exploring Your App"></a>Exploring Your App</h2><ul>
+<li><p>探索应用<br>  <code>kubectl get pods</code>  </p>
+<blockquote>
+<p>查看存在的pod  </p>
+</blockquote>
+<p>  <code>kubectl describe pods</code>  </p>
+<blockquote>
+<p>查看pods内部署的信息及参数  </p>
+</blockquote>
+<p>  <code>kubectl log $POD_NAME</code></p>
+<blockquote>
+<p>查看pod内部的日志，级别为任何STDOUT日志。</p>
+</blockquote>
+<p>  <code>kubectl exec $POD_NAME env</code>  </p>
+<blockquote>
+<p>pod启动后，使podname作为参数通过命令来对pod进行操作，比如查看pod环境变量。此时因为pod只有一个容器，所有容器名可以忽略。</p>
+</blockquote>
+<p>  <code>kubectl exec -ti $POD_NAME bash</code>  </p>
+<blockquote>
+<p>进入pod内容器的命令</p>
+</blockquote>
+<p>  <code></code></p>
+<h2 id="Expose-Your-App"><a href="#Expose-Your-App" class="headerlink" title="Expose Your App"></a>Expose Your App</h2></li>
+<li><p>暴露你的应用<br> <code>kubectl get services</code></p>
+<blockquote>
+<p>获取当前集群的服务  </p>
+</blockquote>
+<p> <code>kubectl expose deployment/kubernetes-bootcamp --type=&quot;NodePort&quot; --port 8080</code></p>
+<blockquote>
+<p>创建一个应用并且对外暴露，用NodePort作为expose的启动参数。  </p>
+</blockquote>
+<p> <code></code></p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/03/31/k8s-start/" data-id="cjtx2x1fk000whnjfrn6ud5g2" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ARTS-week02/">ARTS-week02</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Inside-look-at-modern-web-browser-part-1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/03/31/Inside-look-at-modern-web-browser-part-1/" class="article-date">
+  <time datetime="2019-03-31T15:00:22.000Z" itemprop="datePublished">2019-03-31</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/31/Inside-look-at-modern-web-browser-part-1/">Inside look at modern web browser (part 1)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="内窥现代网络浏览器（part1）"><a href="#内窥现代网络浏览器（part1）" class="headerlink" title="内窥现代网络浏览器（part1）"></a>内窥现代网络浏览器（part1）</h1><p><a href="https://developers.google.com/web/updates/2018/09/inside-browser-part1?utm_source=wanqu.co&amp;utm_campaign=Wanqu+Daily&amp;utm_medium=website" target="_blank" rel="noopener">Inside look at modern web browser (part 1)</a><br>四篇文章的第一篇，深入了解Chrome浏览器，从高层架构到渲染管道的细节。第一篇，我们将了解核心计算术语和Chrome的多进程体系结构。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/03/31/Inside-look-at-modern-web-browser-part-1/" data-id="cjtx2x1dx0003hnjfv32b2kjc" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ARTS-week02/">ARTS-week02</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Leetcode-16-最接近的三数之和" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/03/31/Leetcode-16-最接近的三数之和/" class="article-date">
+  <time datetime="2019-03-31T13:26:51.000Z" itemprop="datePublished">2019-03-31</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/31/Leetcode-16-最接近的三数之和/">Leetcode-16-最接近的三数之和</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="https://leetcode-cn.com/problems/3sum-closest/" target="_blank" rel="noopener">16. 最接近的三数之和</a>  </p>
+<h1 id="提交"><a href="#提交" class="headerlink" title="提交"></a>提交</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def threeSumClosest(self, nums, target):</span><br><span class="line">        nums.sort()</span><br><span class="line">        x = 0</span><br><span class="line">        length = len(nums)</span><br><span class="line">        res = nums[1] + nums[0] + nums[2]</span><br><span class="line">        if length == 3:</span><br><span class="line">            return res</span><br><span class="line">        while  x &lt; length:</span><br><span class="line">            a = nums[x]</span><br><span class="line">            y = x+1</span><br><span class="line">            z = length-1</span><br><span class="line">            while y &lt; z:</span><br><span class="line">                b = nums[y]</span><br><span class="line">                c = nums[z]</span><br><span class="line">                Sum = a + b + c</span><br><span class="line">                if abs(target - Sum) &lt; abs(target - res):</span><br><span class="line">                    res = Sum</span><br><span class="line">                if Sum &gt; target:</span><br><span class="line">                    z -= 1</span><br><span class="line">                elif Sum &lt; target:</span><br><span class="line">                    y += 1</span><br><span class="line">                else:</span><br><span class="line">                    res = target</span><br><span class="line">                    return res</span><br><span class="line">            x += 1</span><br><span class="line">        return res</span><br></pre></td></tr></table></figure>
+<p>与15三数之和差不多，双指针操作。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/03/31/Leetcode-16-最接近的三数之和/" data-id="cjtx2x1ef0008hnjf2xe13heb" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ARTS-week02/">ARTS-week02</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Week01-Share-git常见git命令清单" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/03/24/Week01-Share-git常见git命令清单/" class="article-date">
@@ -89,7 +312,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/24/Week01-Share-git常见git命令清单/" data-id="cjtmr3qid0005kv200fj7ozr9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/24/Week01-Share-git常见git命令清单/" data-id="cjtx2x1eb0005hnjfnqqx920x" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ARTS-week01/">ARTS-week01</a></li></ul>
@@ -123,13 +346,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="教程：如何使用实际按钮将应用程序部署到生产环境"><a href="#教程：如何使用实际按钮将应用程序部署到生产环境" class="headerlink" title="教程：如何使用实际按钮将应用程序部署到生产环境"></a>教程：如何使用实际按钮将应用程序部署到生产环境</h1><p><a href="https://github.blog/2018-08-16-how-to-deploy-to-production-with-an-actual-button/?utm_source=wanqu.co&amp;utm_campaign=Wanqu+Daily&amp;utm_medium=website" target="_blank" rel="noopener">Tutorial: How to deploy an app to production with an actual button</a></p>
-<p>GitHub 写的内容营销文章。用AWS IoT button (看得见摸得着的按钮)，集成AWS lambda+ Github Api来做小项目。<br>有机会可以试一下。</p>
+        <h1 id="教程：如何使用实际按钮将应用程序部署到生产环境"><a href="#教程：如何使用实际按钮将应用程序部署到生产环境" class="headerlink" title="教程：如何使用实际按钮将应用程序部署到生产环境"></a>教程：如何使用实际按钮将应用程序部署到生产环境</h1><p><a href="https://github.blog/2018-08-16-how-to-deploy-to-production-with-an-actual-button/?utm_source=wanqu.co&amp;utm_campaign=Wanqu+Daily&amp;utm_medium=website" target="_blank" rel="noopener">Tutorial: How to deploy an app to production with an actual button</a><br>GitHub 写的内容营销文章。用AWS IoT button (看得见摸得着的按钮)，集成AWS lambda+ Github Api来做小项目。<br>有机会可以试一下。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/24/Tutorial-How-to-deploy-an-app-to-production-with-an-actual-button/" data-id="cjtmr3qi40003kv20t40jqkr0" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/24/Tutorial-How-to-deploy-an-app-to-production-with-an-actual-button/" data-id="cjtx2x1er000chnjfcbnkzdf3" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ARTS-week01/">ARTS-week01</a></li></ul>
@@ -172,7 +394,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/24/Leetcode-15-三数之和/" data-id="cjtmr3qhp0000kv20b2g62y2s" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/24/Leetcode-15-三数之和/" data-id="cjtx2x1e20004hnjfdep9ziuh" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ARTS-week01/">ARTS-week01</a></li></ul>
@@ -206,15 +428,15 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="第一周"><a href="#第一周" class="headerlink" title="第一周"></a>第一周</h1><h2 id="A-Algorithm"><a href="#A-Algorithm" class="headerlink" title="A-Algorithm"></a>A-Algorithm</h2><p><a href="https://xuzequn.github.io/2019/03/24/Leetcode-15-%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C/" target="_blank" rel="noopener">15. 三数之和</a>  </p>
-<h2 id="R-Review"><a href="#R-Review" class="headerlink" title="R-Review"></a>R-Review</h2><p><a href="https://xuzequn.github.io/2019/03/24/Tutorial-How-to-deploy-an-app-to-production-with-an-actual-button/" target="_blank" rel="noopener">Tutorial: How to deploy an app to production with an actual button</a></p>
+        <h1 id="第一周"><a href="#第一周" class="headerlink" title="第一周"></a>第一周</h1><h2 id="A-Algorithm"><a href="#A-Algorithm" class="headerlink" title="A-Algorithm"></a>A-Algorithm</h2><p><a href="https://xuzequn.github.io/2019/03/24/Leetcode-15-%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C/" target="_blank" rel="noopener">16. 三数之和</a>  </p>
+<h2 id="R-Review"><a href="#R-Review" class="headerlink" title="R-Review"></a>R-Review</h2><p><a href="">Inside look at modern web browser (part 1)</a></p>
 <h2 id="T-Tip"><a href="#T-Tip" class="headerlink" title="T-Tip"></a>T-Tip</h2><p><a href="https://xuzequn.github.io/2019/01/20/Sonarqube%E7%AC%94%E8%AE%B0/" target="_blank" rel="noopener">Sonarqube笔记.md</a></p>
 <h2 id="Share"><a href="#Share" class="headerlink" title="Share"></a>Share</h2><p><a href="https://xuzequn.github.io/2019/03/24/Week01-Share-git%E5%B8%B8%E8%A7%81git%E5%91%BD%E4%BB%A4%E6%B8%85%E5%8D%95/" target="_blank" rel="noopener">Week01-Share-git常见git命令清单</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/20/ARTS-Weekly-NO-1/" data-id="cjtmr3qhv0001kv20i3s4scrw" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/20/ARTS-Weekly-NO-1/" data-id="cjtx2x1dk0001hnjf03e5hiq8" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/左耳ARTS/">左耳ARTS</a></li></ul>
@@ -323,7 +545,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/20/Sonarqube笔记/" data-id="cjtmr3qi50004kv20as827b1o" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/20/Sonarqube笔记/" data-id="cjtx2x1ep0009hnjfrkxghr47" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/codereview/">codereview</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/devops/">devops</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sonarqube/">sonarqube</a></li></ul>
@@ -364,52 +586,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/07/初始Tronado/" data-id="cjtmr3qil000bkv208l81hz3s" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/05/25/hello-world/" class="article-date">
-  <time datetime="2018-05-25T09:15:09.453Z" itemprop="datePublished">2018-05-25</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/25/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/05/25/hello-world/" data-id="cjtmr3qii0009kv20py32pd0j" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/07/初始Tronado/" data-id="cjtx2x1fp000xhnjfjt9yrfd6" class="article-share-link">Share</a>
       
       
     </footer>
@@ -420,6 +597,11 @@
 
   
 
+
+  <nav id="page-nav">
+    
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+  </nav>
 
 </section>
         
@@ -439,7 +621,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ARTS-week01/">ARTS-week01</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/codereview/">codereview</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/devops/">devops</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sonarqube/">sonarqube</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/左耳ARTS/">左耳ARTS</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ARTS-week01/">ARTS-week01</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ARTS-week02/">ARTS-week02</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/codereview/">codereview</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/devops/">devops</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sonarqube/">sonarqube</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/左耳ARTS/">左耳ARTS</a></li></ul>
     </div>
   </div>
 
@@ -449,7 +631,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/ARTS-week01/" style="font-size: 20px;">ARTS-week01</a> <a href="/tags/codereview/" style="font-size: 10px;">codereview</a> <a href="/tags/devops/" style="font-size: 10px;">devops</a> <a href="/tags/sonarqube/" style="font-size: 10px;">sonarqube</a> <a href="/tags/左耳ARTS/" style="font-size: 10px;">左耳ARTS</a>
+      <a href="/tags/ARTS-week01/" style="font-size: 15px;">ARTS-week01</a> <a href="/tags/ARTS-week02/" style="font-size: 20px;">ARTS-week02</a> <a href="/tags/codereview/" style="font-size: 10px;">codereview</a> <a href="/tags/devops/" style="font-size: 10px;">devops</a> <a href="/tags/sonarqube/" style="font-size: 10px;">sonarqube</a> <a href="/tags/左耳ARTS/" style="font-size: 10px;">左耳ARTS</a>
     </div>
   </div>
 
@@ -471,23 +653,23 @@
       <ul>
         
           <li>
+            <a href="/2019/03/31/Week02-Share-git-rebase-与-git-merge-的区别/">Week02-Share-git rebase 与 git merge 的区别</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/31/k8s-start/">k8s start</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/31/Inside-look-at-modern-web-browser-part-1/">Inside look at modern web browser (part 1)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/31/Leetcode-16-最接近的三数之和/">Leetcode-16-最接近的三数之和</a>
+          </li>
+        
+          <li>
             <a href="/2019/03/24/Week01-Share-git常见git命令清单/">Week01-Share-git常见git命令清单</a>
-          </li>
-        
-          <li>
-            <a href="/2019/03/24/Tutorial-How-to-deploy-an-app-to-production-with-an-actual-button/">Tutorial: How to deploy an app to production with an actual button</a>
-          </li>
-        
-          <li>
-            <a href="/2019/03/24/Leetcode-15-三数之和/">Leetcode-15. 三数之和</a>
-          </li>
-        
-          <li>
-            <a href="/2019/03/20/ARTS-Weekly-NO-1/">ARTS_Weekly_NO.1</a>
-          </li>
-        
-          <li>
-            <a href="/2019/01/20/Sonarqube笔记/">Sonarqube笔记</a>
           </li>
         
       </ul>
